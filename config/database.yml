@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: demo
+  password: demo
+
+
+development:
+  <<: *default
+  database: buymed_bk_dev
+
+
+test:
+  <<: *default
+  database: buymed_bk_test
+
+
+production:
+  <<: *default
+  database: buymed_bk_production
+  username: buymed_bk
+  password: <%= ENV['BUYMED_BK_DATABASE_PASSWORD'] %>
